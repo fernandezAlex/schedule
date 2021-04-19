@@ -1,11 +1,13 @@
 import { makeStyles } from '@material-ui/core/styles';
+import bgImage from '../img/bg-image.jpg'
 
 const useStyles = makeStyles(theme => ({
     root: {
         height: '100vh',
     },
     image: {
-        backgroundImage: 'url(https://source.unsplash.com/collection/8172461/1500xauto)',
+        // backgroundImage: 'url(https://source.unsplash.com/collection/8172461/1500xauto)',
+        backgroundImage: `url(${bgImage})`,
         backgroundRepeat: 'no-repeat',
         backgroundColor:
         theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],

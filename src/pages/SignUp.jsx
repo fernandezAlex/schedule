@@ -13,15 +13,14 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import logo from '../img/logo.jpg' 
-import PasswordForget from '../components/PasswordForget';
 
 import useStyles from '../config/theme-signinup';
 import Copyright from '../components/Copyright';
 
-function SignIn(props) {
+function SignUp(props) {
   const classes = useStyles();
 
-  const initialUser = {id: null, email: '', password: '', error: null, auth: null}
+  const initialUser = {id: null, name: '', email: '', password: '', error: null, auth: null}
 
   const [user, setUser] = useState(initialUser);
 
@@ -31,19 +30,18 @@ function SignIn(props) {
   }
 
   const handleSubmit = e => {
-    props.firebase.doSignInWithEmailAndPassword(user.email, user.password)
+    props.firebase.auth.createUserWithEmailAndPassword(user.email, user.password)
+    // Later add user also to database
     .then(authUser => {
-      setUser({initialUser})
+      setUser(initialUser);
       props.history.push("/dashboard");
     })
-    .catch(error => {                                             
+    .catch(error => {
       setUser({...user, error: error.message})
     });
   }
-  
-  const isValid = user.email === '' || user.password === '';
 
-  console.log(user);
+  const isValid =  user.name === '' || user.email === '' || user.password === '';
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -57,9 +55,21 @@ function SignIn(props) {
           <img alt="logo" src={logo} />
           <br></br>
           <Typography component="h1" variant="h5">
-            Iniciar sesión
+            Crear cuenta
           </Typography>
           <form className={classes.form} noValidate onSubmit={e => e.preventDefault()}>
+          <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="name"
+              label="Nombre"
+              name="name"
+              autoFocus
+              value={user.name}
+              onChange={handleChange}
+            />
             <TextField
               variant="outlined"
               margin="normal"
@@ -97,15 +107,12 @@ function SignIn(props) {
               onClick={handleSubmit}
               disabled={isValid}
             >
-              Entrar
+              Registrarme
             </Button>
-            <Grid container>
+            <Grid align="center" container>
               <Grid item xs>
-                <PasswordForget />
-              </Grid>
-              <Grid item>
-                <Link to="/sign-up">
-                  Registrarme
+                <Link to="/" >
+                  Ya tienes cuenta ? Inicia Sesión
                 </Link>
               </Grid>
             </Grid>
@@ -118,5 +125,4 @@ function SignIn(props) {
     </Grid>
   );
 }
-
-export default withRouter(withFirebase(SignIn));
+export default withRouter(withFirebase(SignUp));

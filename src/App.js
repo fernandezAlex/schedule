@@ -10,6 +10,8 @@ import {
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './config/theme.config';
 import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -20,9 +22,12 @@ function App() {
             <SignIn />
           </Route>
           <Route path="/sign-up">
-            Signup
+            <SignUp />
           </Route>
-          <p> Page not found </p>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <p> Página no encontrada </p>
         </Switch>
       </ThemeProvider>
     </Router>
