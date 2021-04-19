@@ -34,7 +34,7 @@ function SignIn(props) {
     props.firebase.doSignInWithEmailAndPassword(user.email, user.password)
     .then(authUser => {
       setUser({initialUser})
-      props.history.push("/dashboard");
+      props.history.push("/schedule/dashboard");
     })
     .catch(error => {                                             
       setUser({...user, error: error.message})
@@ -104,7 +104,7 @@ function SignIn(props) {
                 <PasswordForget />
               </Grid>
               <Grid item>
-                <Link to="/sign-up">
+                <Link to="/schedule/sign-up">
                   Registrarme
                 </Link>
               </Grid>
