@@ -18,13 +18,13 @@ function App() {
     <Router>
       <ThemeProvider theme={theme}>
         <Switch>
-          <Route exact path="/schedule">
+          <Route exact path="">
             <SignIn />
           </Route>
-          <Route path="/schedule/sign-up">
+          <Route path="/sign-up">
             <SignUp />
           </Route>
-          <Route path="/schedule/dashboard">
+          <Route path="/dashboard">
             <Dashboard />
           </Route>
           <p> Página no encontrada </p>
