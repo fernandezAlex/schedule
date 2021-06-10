@@ -18,7 +18,8 @@ function App() {
     <Router>
       <ThemeProvider theme={theme}>
         <Switch>
-          <Route exact path="">
+          {/* <Route exact path=""> */}
+          <Route exact path="/">
             <SignIn />
           </Route>
           <Route path="/sign-up">
