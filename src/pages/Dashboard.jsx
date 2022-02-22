@@ -26,6 +26,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import useStyles from '../config/theme.dashboard';
 import Copyright from '../components/Copyright';
 import Sidebar from '../components/Sidebar';
+import Calendar from '../components/Calendar';
 
 function Dashboard(props) {
   let match = useRouteMatch();
@@ -73,7 +74,7 @@ function Dashboard(props) {
             <main className={classes.content, !open ? classes.contentClosed : classes.appBarShift }>
               <div className={classes.appBarSpacer} />
               <Container maxWidth="xl" className={classes.container}>
-                  Calendar
+                  <Calendar firebase={props.firebase} authUser={authUser} />
                   <Box pt={4}>
                       <Copyright />
                   </Box>

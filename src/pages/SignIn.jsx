@@ -44,8 +44,6 @@ function SignIn(props) {
   
   const isValid = user.email === '' || user.password === '';
 
-  console.log(user);
-
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
